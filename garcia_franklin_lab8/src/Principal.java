@@ -579,7 +579,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        clase_basedatos.Dba db = new clase_basedatos.Dba("./Database1.accdb");
+        Dba db = new Dba("./Database1.accdb");
         db.conectar();
         try {
             String nombre = tf_nombre.getText();
@@ -589,7 +589,9 @@ public class Principal extends javax.swing.JFrame {
             int edad = Integer.parseInt(tf_edad.getText());
             String genero = cb_genero.getSelectedItem().toString();
             db.query.execute("INSERT INTO contactos"
+                    + "(nombre,numero,edad,correo,direccion,genero)"
                     + "VALUES ('" + nombre + "','" + num_telefono + "','" + edad + "','" + correo + "','" + direccion + "','" + genero + "')"); //ESTAR ATENTO DE LOS ESPACIOS
+            db.commit();
             tf_nombre.setText("");
             tf_num.setText("");
             tf_correo.setText("");
