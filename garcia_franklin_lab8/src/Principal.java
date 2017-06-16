@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -94,9 +96,11 @@ public class Principal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jt_arbol = new javax.swing.JTree();
+        cb_filtrar1 = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -176,7 +180,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(269, 269, 269)
                         .addComponent(jButton1)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(192, 192, 192)
@@ -270,7 +274,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(tf_correo1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                                 .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +373,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addComponent(jButton4)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +431,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(275, 275, 275)
                         .addComponent(jButton6)))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,7 +486,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(260, 260, 260)
                         .addComponent(jButton7)))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,38 +509,61 @@ public class Principal extends javax.swing.JFrame {
         tab.addTab("Video llamadas", jPanel5);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Contactos");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane2.setViewportView(jTree1);
+        jt_arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jt_arbol);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "edad", "genero" }));
+        cb_filtrar1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "edad", "genero" }));
 
         jButton5.setText("Listar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jLabel27.setText("Filtrar por");
+
+        jLabel28.setText("Agenda");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(283, 283, 283)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel27))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(cb_filtrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(304, 304, 304)
+                .addComponent(jLabel28)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addGap(18, 18, 18)
+                .addComponent(cb_filtrar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addComponent(jButton5)
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(228, 228, 228))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel28)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         tab.addTab("Agenda", jPanel6);
@@ -556,7 +583,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76))
             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -606,7 +633,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Dba db = new Dba("./Database1.accdb");
+        Dba db = new Dba("./telefono.accdb");
         db.conectar();
         try {
             String nombre = tf_nombre.getText();
@@ -633,7 +660,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void tabStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabStateChanged
         if (tab.getSelectedIndex() == 1) {
-            Dba db = new Dba("./Database1.accdb");
+            Dba db = new Dba("./telefono.accdb");
             DefaultComboBoxModel modelo = new DefaultComboBoxModel();
             db.conectar();
             try {
@@ -650,7 +677,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (tab.getSelectedIndex() == 2) {
-            Dba db = new Dba("./Database1.accdb");
+            Dba db = new Dba("./telefono.accdb");
             DefaultComboBoxModel modelo = new DefaultComboBoxModel();
             db.conectar();
             try {
@@ -666,7 +693,7 @@ public class Principal extends javax.swing.JFrame {
             db.desconectar();
         }
         if (tab.getSelectedIndex() == 3) {
-            Dba db = new Dba("./Database1.accdb");
+            Dba db = new Dba("./telefono.accdb");
             DefaultComboBoxModel modelo = new DefaultComboBoxModel();
             DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
             db.conectar();
@@ -688,7 +715,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tabStateChanged
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        Dba db = new Dba("./Database1.accdb");
+        Dba db = new Dba("./telefono.accdb");
         db.conectar();
         String name = cb_seleccion1.getSelectedItem().toString();
         try {
@@ -713,7 +740,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        Dba db = new Dba("./Database1.accdb");
+        Dba db = new Dba("./telefono.accdb");
         db.conectar();
         String name1 = cb_seleccion3.getSelectedItem().toString();
         try {
@@ -725,7 +752,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        Dba db = new Dba("./Database1.accdb");
+        Dba db = new Dba("./telefono.accdb");
         db.conectar();
         try {
             String emisor = cb_emisor1.getSelectedItem().toString();
@@ -733,11 +760,11 @@ public class Principal extends javax.swing.JFrame {
             String mensaje = ta_mensaje1.getText();
             Date fecha = new Date();
             DateFormat df = new SimpleDateFormat("yyyy//MM//dd");
-            String fecha2=df.format(fecha);
+            String fecha2 = df.format(fecha);
             db.query.execute("INSERT INTO mensaje"
                     + "(emisor,receptor,fecha_envio,contenido)"
                     + "VALUES ('" + emisor + "','" + receptor + "','" + fecha2 + "','" + mensaje + "')"); //ESTAR ATENTO DE LOS ESPACIOS
-           db.commit();
+            db.commit();
             ta_mensaje1.setText("");
         } catch (Exception e) {
             e.printStackTrace();
@@ -745,6 +772,71 @@ public class Principal extends javax.swing.JFrame {
         db.desconectar();
 
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        if (cb_filtrar1.getSelectedIndex() == 1) {
+
+            Dba db = new Dba("./telefono.accdb");
+            DefaultTreeModel modelo = (DefaultTreeModel) jt_arbol.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+            db.conectar();
+            int centinela = -1;
+            try {
+                db.query.execute("select * from contactos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    for (int i = 0; i < raiz.getChildCount(); i++) {
+                        if (raiz.getChildAt(i).toString().equals(rs.getString(6))) {
+                            //String nombre, int num_telefono, String correo, String decsripcion, int edad, String genero
+                            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new contacto(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
+                            ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                            centinela = 1;
+                        }
+                    }
+                    if (centinela == -1) {
+                        DefaultMutableTreeNode n = new DefaultMutableTreeNode(rs.getString(6));
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new contacto(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
+                        n.add(p);
+                        raiz.add(n);
+                    }
+                    modelo.reload();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            db.desconectar();
+        } else if (cb_filtrar1.getSelectedIndex() == 0) {
+            Dba db = new Dba("./telefono.accdb");
+            DefaultTreeModel modelo = (DefaultTreeModel) jt_arbol.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+            jt_arbol.removeAll();
+            db.conectar();
+            int centinela = -1;
+            try {
+                db.query.execute("select * from contactos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    for (int i = 0; i < raiz.getChildCount(); i++) {
+                        if (Integer.parseInt(raiz.getChildAt(i).toString()) == rs.getInt(2)) {
+                            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new contacto(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
+                            ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                            centinela = 1;
+                        }
+                    }
+                    if (centinela == -1) {
+                        DefaultMutableTreeNode n = new DefaultMutableTreeNode(rs.getInt(2));
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new contacto(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)));
+                        n.add(p);
+                        raiz.add(n);
+                    }
+                    modelo.reload();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            db.desconectar();
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -783,6 +875,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_emisor1;
+    private javax.swing.JComboBox<String> cb_filtrar1;
     private javax.swing.JComboBox<String> cb_genero;
     private javax.swing.JComboBox<String> cb_genero2;
     private javax.swing.JComboBox<String> cb_receptor1;
@@ -795,7 +888,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JComboBox<String> jComboBox9;
@@ -818,6 +910,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -837,8 +931,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree2;
+    private javax.swing.JTree jt_arbol;
     private javax.swing.JTextArea ta_descripcion1;
     private javax.swing.JTextArea ta_direccion;
     private javax.swing.JTextArea ta_mensaje1;
