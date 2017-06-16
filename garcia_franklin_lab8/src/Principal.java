@@ -91,9 +91,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        cb_emisor2 = new javax.swing.JComboBox<>();
+        cb_receptor2 = new javax.swing.JComboBox<>();
         jButton7 = new javax.swing.JButton();
+        lb_duracion = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_arbol = new javax.swing.JTree();
@@ -464,6 +466,17 @@ public class Principal extends javax.swing.JFrame {
         jLabel25.setText("Receptor");
 
         jButton7.setText("Iniciar llamada");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        lb_duracion.setBackground(new java.awt.Color(51, 51, 255));
+        lb_duracion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_duracion.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel30.setText("Duracion");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -472,20 +485,25 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(jLabel22))
+                        .addGap(260, 260, 260)
+                        .addComponent(jButton7))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
+                        .addGap(83, 83, 83)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
-                            .addComponent(jLabel25))
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(jButton7)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(46, 46, 46)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_receptor2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_emisor2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addGap(93, 93, 93)
+                                        .addComponent(jLabel22))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel30)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(lb_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -493,17 +511,23 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel22)
-                .addGap(28, 28, 28)
+                .addGap(64, 64, 64)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addGap(14, 14, 14)))
+                .addGap(53, 53, 53)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(cb_emisor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(134, 134, 134)
+                    .addComponent(cb_receptor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(33, 33, 33)
                 .addComponent(jButton7)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         tab.addTab("Video llamadas", jPanel5);
@@ -711,7 +735,25 @@ public class Principal extends javax.swing.JFrame {
             }
             db.desconectar();
         }
-
+        if (tab.getSelectedIndex() == 4) {
+            Dba db = new Dba("./telefono.accdb");
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
+            db.conectar();
+            try {
+                db.query.execute("select nombre from contactos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    modelo.addElement(rs.getString(1));
+                    cb_emisor2.setModel(modelo);
+                    modelo2.addElement(rs.getString(1));
+                    cb_receptor2.setModel(modelo2);
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+        }
     }//GEN-LAST:event_tabStateChanged
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -838,6 +880,30 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        Dba db = new Dba("./telefono.accdb");
+        db.conectar();
+        try {
+            String emisor = cb_emisor2.getSelectedItem().toString();
+            String receptor = cb_receptor2.getSelectedItem().toString();
+            String mensaje = ta_mensaje1.getText();
+            Date fecha = new Date();
+            DateFormat df = new SimpleDateFormat("yyyy//MM//dd");
+            String fecha2 = df.format(fecha);
+            h = new Hilo(lb_duracion);
+            h.start();
+            db.query.execute("INSERT INTO video_llamada"
+                    + "(emisor,receptor,duracion,fecha)"
+                    + "VALUES ('" + emisor + "','" + receptor + "','" + 2 + "','" + fecha2 + "')"); //ESTAR ATENTO DE LOS ESPACIOS
+            db.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        db.desconectar();
+
+
+    }//GEN-LAST:event_jButton7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -875,10 +941,12 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_emisor1;
+    private javax.swing.JComboBox<String> cb_emisor2;
     private javax.swing.JComboBox<String> cb_filtrar1;
     private javax.swing.JComboBox<String> cb_genero;
     private javax.swing.JComboBox<String> cb_genero2;
     private javax.swing.JComboBox<String> cb_receptor1;
+    private javax.swing.JComboBox<String> cb_receptor2;
     private javax.swing.JComboBox<String> cb_seleccion1;
     private javax.swing.JComboBox<String> cb_seleccion3;
     private javax.swing.JButton jButton1;
@@ -888,8 +956,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -913,6 +979,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -933,6 +1000,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTree jTree2;
     private javax.swing.JTree jt_arbol;
+    private javax.swing.JLabel lb_duracion;
     private javax.swing.JTextArea ta_descripcion1;
     private javax.swing.JTextArea ta_direccion;
     private javax.swing.JTextArea ta_mensaje1;
@@ -946,4 +1014,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_num;
     private javax.swing.JTextField tf_num1;
     // End of variables declaration//GEN-END:variables
+Hilo h;
 }
