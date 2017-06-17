@@ -894,9 +894,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+
+        h = new Hilo(lb_duracion);
+        h.start();
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        h.stop();
         Dba db = new Dba("./telefono.accdb");
         db.conectar();
         try {
+            h.stop();
             String emisor = cb_emisor2.getSelectedItem().toString();
             String receptor = cb_receptor2.getSelectedItem().toString();
             String mensaje = ta_mensaje1.getText();
@@ -907,18 +915,12 @@ public class Principal extends javax.swing.JFrame {
             h.start();
             db.query.execute("INSERT INTO video_llamada"
                     + "(emisor,receptor,duracion,fecha)"
-                    + "VALUES ('" + emisor + "','" + receptor + "','" + 2 + "','" + fecha2 + "')"); //ESTAR ATENTO DE LOS ESPACIOS
+                    + "VALUES ('" + emisor + "','" + receptor + "','" + lb_duracion.getText() + "','" + fecha2 + "')"); //ESTAR ATENTO DE LOS ESPACIOS
             db.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
         db.desconectar();
-
-
-    }//GEN-LAST:event_jButton7MouseClicked
-
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-     h.isInterrupted();
     }//GEN-LAST:event_jButton8MouseClicked
 
     /**
