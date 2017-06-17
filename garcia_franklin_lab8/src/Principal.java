@@ -904,15 +904,13 @@ public class Principal extends javax.swing.JFrame {
         Dba db = new Dba("./telefono.accdb");
         db.conectar();
         try {
-            h.stop();
+          
             String emisor = cb_emisor2.getSelectedItem().toString();
             String receptor = cb_receptor2.getSelectedItem().toString();
             String mensaje = ta_mensaje1.getText();
             Date fecha = new Date();
             DateFormat df = new SimpleDateFormat("yyyy//MM//dd");
             String fecha2 = df.format(fecha);
-            h = new Hilo(lb_duracion);
-            h.start();
             db.query.execute("INSERT INTO video_llamada"
                     + "(emisor,receptor,duracion,fecha)"
                     + "VALUES ('" + emisor + "','" + receptor + "','" + lb_duracion.getText() + "','" + fecha2 + "')"); //ESTAR ATENTO DE LOS ESPACIOS
