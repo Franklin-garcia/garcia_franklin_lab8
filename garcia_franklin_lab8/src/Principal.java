@@ -96,6 +96,7 @@ public class Principal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         lb_duracion = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_arbol = new javax.swing.JTree();
@@ -478,6 +479,8 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel30.setText("Duracion");
 
+        jButton8.setText("Colgar");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -503,7 +506,10 @@ public class Principal extends javax.swing.JFrame {
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel30)
                                         .addGap(33, 33, 33)
-                                        .addComponent(lb_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(lb_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(jButton8)))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -527,7 +533,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel25))
                 .addGap(33, 33, 33)
                 .addComponent(jButton7)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButton8)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         tab.addTab("Video llamadas", jPanel5);
@@ -956,6 +964,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

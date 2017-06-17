@@ -23,13 +23,20 @@ public class Hilo extends Thread {
 
     @Override
     public void run() {
+       int min=0;
+       int seg=0;
         while (true) {
-            Date h = new Date();
-            DateFormat f = new SimpleDateFormat("mm:ss");
-            hora.setText(f.format(h));
+            while(seg<60){
+                if (seg==59) {
+                     min++;
+                     seg=0;
+                     hora.setText("MIN:"+seg+"SEG:"+min); 
+                }
+                seg++;
+            }
+                        
             try {
-
-                Thread.sleep(50);
+                Thread.sleep(999999999);
             } catch (InterruptedException e) {
             }
         }
